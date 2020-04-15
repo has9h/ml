@@ -17,12 +17,18 @@ y = np.array(df['class'])
 # Cross-validation
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2)
 
+
 # Classifier
-clf = svm.SVC()
-clf.fit(X_train, y_train)
+# Pass in keyword argument for kernel to change model
+def classifier(kernel_):
+    return svm.SVC(kernel='{}'.format(kernel_)) 
+
+
+model = classifier('linear')
+model.fit(X_train, y_train)
 
 # Testing
-acc = clf.score(X_test, y_test)
+acc = model.score(X_test, y_test)
 print(acc)
 
 # Simple sample to predict
@@ -30,11 +36,11 @@ print(acc)
 # example_measures = example_measures.reshape(len(example_measures), -1)
 
 # Predicting the test set (Validation would be good here)
-predict = clf.predict(X_test)
+predict = model.predict(X_test)
 
 # Checking class labels
 print(predict)
 
 # Reports
-print(confusion_matrix(y_test, predict))
-print(classification_report(y_test, predict))
+# print(confusion_matrix(y_test, predict))
+# print(classification_report(y_test, predict))

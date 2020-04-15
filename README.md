@@ -1,4 +1,10 @@
 # Support Vector Machines
 
-- From Scratch *Incomplete*
-- Using scikit-learn
+**Files:**
+- [**Incomplete**] From Scratch
+- Using scikit-learn, on [breast cancer data](http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Original%29)
+
+**Implementation tasks/ideas**
+
+1. Generate graphs of acc, recall, sensitivity for each classification
+2. Find the difference (in terms of graphs) between scores in each classification and each iteration
