@@ -9,14 +9,23 @@ df = pd.read_csv('../Datasets/Breast-Cancer/breast-cancer-wisconsin.data')
 df.replace('?', -99999, inplace=True)
 df.drop(['id'], 1, inplace=True)
 
-# Features
-X = np.array(df.drop(['class'], 1))
-# Labels
+# Feature Subset Selection
 y = np.array(df['class'])
+
+df.drop(['class'], 1, inplace=True)
+
+pos = np.random.randint(2, size=9)
+subset_index = []
+for index_val, itr in enumerate(pos):
+            if itr == 1:
+                subset_index.append(index_val)
+X_subset = df.iloc[:, np.array(subset_index)]
+
+X = np.array(X_subset)
+# Labels
 
 # Cross-validation
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2)
-
 
 # Classifier
 # Pass in keyword argument for kernel to change model
